@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_sea"
+    android:padding="16dp"
+    android:gravity="center"
+    tools:context=".SigninActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sổ tiết kiệm"
+            android:textSize="64sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/sgin_in_bg"
+            android:textColor="@color/cardview_dark_background"/>
+
+
+        <EditText
+            android:id="@+id/edTaiKhoan"
+            android:padding="8dp"
+            android:background="@drawable/white_shape"
+            android:layout_margin="8dp"
+            android:textSize="32sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên tài khoản"/>
+
+        <EditText
+            android:id="@+id/edPassword"
+            android:padding="8dp"
+            android:background="@drawable/white_shape"
+            android:layout_margin="8dp"
+            android:textSize="32sp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Mật khẩu"/>
+
+        <Button
+            android:id="@+id/btDangNhap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:text="Đăng nhập"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/btDangKy"
+            android:layout_width="242dp"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+
+            android:textSize="32sp" />
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:textSize="32sp"
+        />
+
+
+</LinearLayout>

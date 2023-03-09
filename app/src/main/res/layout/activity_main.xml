@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_main_scene"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+
+    android:background="@drawable/bg_lightgray">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sgin_in_bg"
+        android:orientation="vertical"
+        android:layout_marginBottom="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                app:cardCornerRadius="250dp"
+                app:cardBackgroundColor="@color/white">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:cardCornerRadius="250dp"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@drawable/download"
+                        android:scaleType="centerCrop"/>
+
+                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvTen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sổ chi tiêu"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"/>
+
+        </LinearLayout>
+
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:text="Số dư tài khoản"
+            android:textSize="32sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/edittextstyle">
+
+            <TextView
+                android:id="@+id/tvKetQua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:paddingLeft="20sp"
+                android:paddingRight="5sp"
+
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:text="@string/so_tien_hien_tai"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+
+                android:paddingRight="5sp"
+
+                android:text="VND"
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </LinearLayout>
+
+
+    <EditText
+        android:background="@drawable/edittextstyle"
+        android:id="@+id/edSotien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập số tiền"
+        android:inputType="number"
+        android:textSize="30sp"
+        android:layout_marginTop="2sp"
+        android:padding="5sp"
+        android:layout_margin="8dp"
+        >
+    </EditText>
+
+
+
+    <Button
+        android:id="@+id/btnXacNhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xác nhận"
+        android:inputType="number"
+        android:textSize="24sp"
+        android:layout_marginLeft="8dp">
+    </Button>
+
+
+
+
+</LinearLayout>

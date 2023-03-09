@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SignIn</string>
+    <string name="so_tien_hien_tai">0</string>
+    <string name="ten">Tên tài khoản</string>
+</resources>
