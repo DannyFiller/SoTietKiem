@@ -1,4 +1,4 @@
-package com.example.sotietkiem;
+package com.example.sotietkiem.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,8 @@ import data.DatabaseHandler;
 import data.User;
 import data.Utils;
 
+import com.example.sotietkiem.R;
+import com.example.sotietkiem.SignInActivity;
 import com.google.gson.Gson;
 
 //import data.DatabaseHandler;
@@ -51,10 +53,12 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = edUserName.getText().toString();
                 String password = edPassword.getText().toString();
-                User user = new User(0,name,password);
+                String email = edGmail.getText().toString();
+                String phone = edPhone.getText().toString();
+                User user = new User(0,name,password,email,phone);
                 DataQuery.insert(RegisterActivity.this,user);
 
-                Intent i = new Intent(RegisterActivity.this,SignInActivity.class  );
+                Intent i = new Intent(RegisterActivity.this, SignInActivity.class  );
                 startActivity(i);
 
             }

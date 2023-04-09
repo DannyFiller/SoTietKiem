@@ -4,24 +4,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:gravity="center"
+    android:background="@color/light_gray"
+    android:orientation="vertical"
     tools:context=".fragment.InfoFragment">
 
-    <TableLayout android:layout_height="match_parent"
+
+    <TableLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:stretchColumns="1"
+        android:shrinkColumns="0"
+        android:background="@drawable/white_shape"
         xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_account_circle_64"
+            android:background="@drawable/white_shape"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp">
+        </ImageView>
+
         <TableRow>
             <TextView
-                android:id="@+id/tvUserNameInfo"
+
                 android:text="Tên tài khoản"
+                android:textSize="24sp"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/tvUserNameInfo"
+                android:text="ten"
+                android:padding="8dp"
                 android:textSize="24sp"/>
 
         </TableRow>
 
         <TableRow>
-            <TextView>
-
-            </TextView>
+            <TextView
+                android:text="Mật khẩu"
+                android:textSize="24sp"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/tvPasswordInfo"
+                android:text="password"
+                android:padding="8dp"
+                android:textSize="24sp"/>
         </TableRow>
 
     </TableLayout>

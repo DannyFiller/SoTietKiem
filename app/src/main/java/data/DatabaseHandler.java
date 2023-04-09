@@ -16,17 +16,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //Các cột trong database
     public static final String TABLE_NAME = "listUser";
-    public static final String COLUMN_ID = "id";
-    public static final String COLUMN_USERNAME = "username";
-    public static final String COLUMN_PASSWORD = "password";
+    public static final String COLUMN_USERNAME ="username";
+    public static final String COLUMN_PASSWORD ="password";
 
-    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_ID = "id";
+
+    public static final String COLUMN_MONEY = "money";
+
+
+    //Bảng SoTietKiem
+    public static final String TABLE_NAME1 = "SoTietKiem";
+    public static final String COLUMN_ID_SOTIETKIEM = "id";
+    public static final String COLUMN_ID_USER = "idUser";
+    public static final String COLUMN_NAME_SO = "tenSo";
+    public static final String COLUMN_MONEY_SO = "soTien";
 
 
 
     private String[] allColumns = {DatabaseHandler.COLUMN_USERNAME,DatabaseHandler.COLUMN_PASSWORD};
-    //tạo bảng
-    private static final String TABLE_CREATE = "create table " + TABLE_NAME + "( " + COLUMN_ID + " integer primary key autoincrement, "+ COLUMN_USERNAME +" text not null," + COLUMN_PASSWORD + " text not null);";
+//    tạo bảng
+    private static final String TABLE_CREATE = "CREATE TABLE "
+            + TABLE_NAME
+            + "( "
+            + COLUMN_ID + " INTER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_USERNAME +" TEXT,"
+            + COLUMN_PASSWORD + " TEXT,"
+            + COLUMN_MONEY +" INT  );";
+
+
 
 
     public DatabaseHandler(Context context) {
@@ -34,13 +51,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TABLE_CREATE);
+
+        db.execSQL("CREATE TABLE "
+                + TABLE_NAME
+                + "( "
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_USERNAME +" TEXT,"
+                + COLUMN_PASSWORD + " TEXT,"
+                + COLUMN_MONEY +" INT  );");
+
+        db.execSQL("CREATE TABLE "
+                + TABLE_NAME1
+                + "( "
+                + COLUMN_ID_SOTIETKIEM + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_ID_USER +" INT NOT NULL,"
+                + COLUMN_NAME_SO + " TEXT,"
+                + COLUMN_MONEY_SO +" INT);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String query = "DROP TABLE IF EXISTS " + TABLE_NAME;
-        db.execSQL(query);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME1);
         this.onCreate(db);
     }
 
@@ -56,6 +88,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_NAME,null,values);
     }
 
+    public void opendb ()
+    {
+        SQLiteDatabase db = getWritableDatabase();
+
+    }
 
 
 

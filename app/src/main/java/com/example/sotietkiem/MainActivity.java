@@ -146,18 +146,18 @@ public class MainActivity extends AppCompatActivity {
                         loadFragment(new HomeFragment());
                         return  true;
 
-                    case R.id.mnHistory:
-                        loadFragment(new HistoryFragment());
-                        return  true;
+//                    case R.id.mnHistory:
+//                        loadFragment(new HistoryFragment());
+//                        return  true;
 
 
                     case R.id.mnInfo:
                         loadFragment(new InfoFragment());
                         return  true;
 
-                    case R.id.mnSetting:
-                        loadFragment(new SettingFragment());
-                        return  true;
+//                    case R.id.mnSetting:
+//                        loadFragment(new SettingFragment());
+//                        return  true;
                 }
                 return true;
 

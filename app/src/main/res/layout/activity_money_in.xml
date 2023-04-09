@@ -5,19 +5,116 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
     tools:context="InOut.MoneyInActivity">
 
     <TextView
+        android:id="@+id/tvGửitiếtkiệm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/light_green"
         android:text="@string/mmm"
         android:textAlignment="center"
-        android:textSize="32sp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcView"
+        android:inputType="number"
+        android:textSize="32sp"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/edTenUser"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="60dp"
+        android:background="@drawable/bg_lightgray"
+
+        android:layout_marginTop="16dp"
+        android:hint="Tên người dùng"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:drawablePadding="4dp"
+        android:textStyle="bold"
+        />
+    <EditText
+        android:id="@+id/edSodu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bg_lightgray"
+
+        android:layout_marginTop="16dp"
+        android:hint="Số dư tài khoản"
+        android:textSize="18sp"
+        android:padding="16dp"
+
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/tvInfornation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thông tin tiết kiệm:"
+        android:textColor="@color/light_green"
+
+        android:padding="8dp"
+        android:textSize="25dp"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"/>
+
+<!--    <Spinner-->
+<!--        android:id="@+id/spinner"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:prompt="spinner_title"-->
+<!--        />-->
+
+    <EditText
+        android:id="@+id/edPTĐH"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bg_lightgray"
+
+        android:layout_marginTop="16dp"
+        android:hint="Phương thức đáo hạn"
+        android:textSize="18sp"
+        android:padding="16dp"
+
+        android:textStyle="bold"
+        />
+    <EditText
+        android:id="@+id/edGuiTien"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bg_lightgray"
+        android:layout_marginTop="16dp"
+        android:hint="Số tiền gửi"
+        android:inputType="number"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:textStyle="bold"
+        />
+    <EditText
+        android:id="@+id/edNộidung"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bg_lightgray"
+
+        android:layout_marginTop="16dp"
+        android:hint="Nội dung giao dịch"
+
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:id="@+id/btnGui"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Gửi"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
 
 
 

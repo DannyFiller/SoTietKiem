@@ -1,6 +1,7 @@
 package com.example.sotietkiem.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -15,13 +16,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.sotietkiem.MainActivity;
 import com.example.sotietkiem.R;
+import com.example.sotietkiem.SignInActivity;
 import com.example.sotietkiem.UserAdapter;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
+import InOut.MoneyInActivity;
+
+import InOut.NapActivity;
+import InOut.OutMoneyActivity;
+import data.DataQuery;
 import data.User;
 import data.Utils;
 
@@ -35,47 +43,71 @@ public class HomeFragment extends Fragment implements UserAdapter.UserCallback{
     RecyclerView rvListC;
     ArrayList<User> lstUser;
     UserAdapter userAdapter;
-    TextView tvKetQua,tvTen;
+
+    TextView tvKetQua,tvTen,btnGuiTK,btnRutTK,btnNap;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        rvListC = v.findViewById(R.id.rcListHome);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        rvListC.setAdapter(userAdapter);
-        rvListC.setLayoutManager(linearLayoutManager);
+        User user= SignInActivity.loginUser;
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+//        rvListC.setAdapter(userAdapter);
+//        rvListC.setLayoutManager(linearLayoutManager);
 
 //        edSoTien = v.findViewById(R.id.edSotien);
 //        btnXacNhan = v.findViewById(R.id.btnXacNhan);
         tvKetQua = v.findViewById(R.id.tvKetQua);
         tvTen = v.findViewById(R.id.tvTen );
+        btnGuiTK=v.findViewById(R.id.tvbtnGuiTK);
+        btnRutTK= v.findViewById(R.id.tvbtnRut);
+        btnNap = v.findViewById(R.id.tvbtnNap);
+
+        String tienHienCo = String.valueOf(SignInActivity.loginUser.getMoney());
+        tvTen.setText(SignInActivity.loginUser.getUserName());
+        tvKetQua.setText(tienHienCo);
 
 
-//        SharedPreferences shareget = getActivity().getSharedPreferences(Utils.SHARE_PREFERENCES_APP, Context.MODE_PRIVATE);
-//        String userPref = shareget.getString(Utils.KEY_USER,null);
-
-//        User user = gson.fromJson(userPref,User.class);
-
-//        if (user == null) {
-//            tvTen.setText("Tên tài khoản");
+//        Bundle goi = getActivity().getIntent().getExtras();
 //
-//        }
-//        else {
-//            String info = user.getUserName();
-//            tvTen.setText(info);
-//        }
+//        String usingUser = goi.getString("username");
+//        User loginUser = new User(usingUser);
+//        User user1 = DataQuery.GetMoney(getContext(),loginUser);
+//        String money = String.valueOf(user1.getMoney());
+//        tvKetQua.setText(money);
 
-//        btnXacNhan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Cong();
-//
-//                edSoTien.setText(String.valueOf(("")));
-//            }
-//        });
+
+        btnGuiTK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), MoneyInActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnRutTK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), OutMoneyActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnNap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), NapActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+
+
         return v;
     }
+
+
+
 
 //    void LoadData()
 //    {

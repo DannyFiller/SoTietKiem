@@ -40,7 +40,7 @@
                         <ImageView
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            android:src="@drawable/download"
+                            android:src="@drawable/baseline_account_circle_64"
                             android:scaleType="centerCrop"/>
 
                     </androidx.cardview.widget.CardView>
@@ -109,11 +109,41 @@
 
         </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcListHome"
+    <TextView
+        android:id="@+id/tvbtnNap"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:text="Nạp tiền vào tải khoản"
+        android:background="@color/white"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:textSize="32sp"
+        android:layout_marginTop="16dp"
+        android:padding="8sp"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/tvbtnGuiTK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gửi tiết kiệm"
+        android:background="@color/white"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:textSize="32sp"
+        android:layout_marginTop="16dp"
+        android:padding="8sp"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/tvbtnRut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rút tiết kiệm"
+        android:background="@color/white"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:textSize="32sp"
+        android:layout_marginTop="16dp"
+        android:padding="8sp"
+        android:clickable="true"/>
 
 
 
