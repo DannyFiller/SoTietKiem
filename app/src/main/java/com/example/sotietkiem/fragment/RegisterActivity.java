@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = edGmail.getText().toString();
                 String phone = edPhone.getText().toString();
                 User user = new User(0,name,password,email,phone);
-                DataQuery.insert(RegisterActivity.this,user);
+                DataQuery.insertUser(RegisterActivity.this,user);
 
                 Intent i = new Intent(RegisterActivity.this, SignInActivity.class  );
                 startActivity(i);

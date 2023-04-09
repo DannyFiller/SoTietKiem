@@ -7,20 +7,15 @@
     android:background="@drawable/white_shape"
 
     >
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/ivAvatar"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background"/>
+
     <TextView
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name"
         android:textColor="@color/black"
         android:gravity="center"
-        android:textSize="20sp"
-        android:layout_marginLeft="16dp"
-        android:id="@+id/tvName"
-        />
+        android:textSize="32sp"
+        android:layout_marginLeft="16dp"/>
+
 </LinearLayout>

@@ -99,6 +99,7 @@ import androidx.navigation.Navigation;
 import com.example.sotietkiem.fragment.HistoryFragment;
 import com.example.sotietkiem.fragment.HomeFragment;
 import com.example.sotietkiem.fragment.InfoFragment;
+import com.example.sotietkiem.fragment.ListFragment;
 import com.example.sotietkiem.fragment.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -146,9 +147,10 @@ public class MainActivity extends AppCompatActivity {
                         loadFragment(new HomeFragment());
                         return  true;
 
-//                    case R.id.mnHistory:
-//                        loadFragment(new HistoryFragment());
-//                        return  true;
+
+                    case R.id.mnList:
+                        loadFragment(new ListFragment());
+                        return  true;
 
 
                     case R.id.mnInfo:

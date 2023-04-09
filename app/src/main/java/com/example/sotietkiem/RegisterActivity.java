@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String name = edUserName.getText().toString();
                 String password = edPassword.getText().toString();
                 User user = new User(0,name,password);
-                DataQuery.insert(RegisterActivity.this,user);
+                DataQuery.insertUser(RegisterActivity.this,user);
 
                 Intent i = new Intent(RegisterActivity.this,SignInActivity.class  );
                 startActivity(i);

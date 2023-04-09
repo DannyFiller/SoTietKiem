@@ -10,7 +10,13 @@ public class User implements Serializable {
     int money;
     String userName;
     String password;
-     String email;
+
+    public User(int id, int money) {
+        this.id = id;
+        this.money = money;
+    }
+
+    String email;
      String phoneNumber;
 
     public User(int id,String userName, String password, String email, String phoneNumber) {

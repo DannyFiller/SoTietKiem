@@ -1,5 +1,6 @@
 package data;
 
+import android.app.DownloadManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,13 +10,14 @@ import android.widget.Toast;
 import com.example.sotietkiem.fragment.HistoryFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import InOut.NapActivity;
 
 public class DataQuery {
 
 
-    public static void insert(Context context, User user)
+    public static void insertUser(Context context, User user)
     {
         DatabaseHandler helper = new DatabaseHandler(context);
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -36,12 +38,22 @@ public class DataQuery {
         db.update(helper.TABLE_NAME, values, "username=?", new String[]{user.getUserName()});
     }
 
-    public static boolean delete(Context context , int id )
+    public User  UpdateMoney(Context context,User user)
     {
+        User user1 = null;
         DatabaseHandler helper = new DatabaseHandler(context);
-        SQLiteDatabase sqLiteDatabase = helper.getWritableDatabase();
-        int rs = sqLiteDatabase.delete(helper.TABLE_NAME,helper.COLUMN_ID+ "=?", new String[]{String.valueOf(id)});
-        return (rs>0);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("money", user.getMoney());
+        String sql="SELECT * from "+helper.TABLE_NAME+" WHERE "+helper.COLUMN_USERNAME+" = "+"'"+user.userName+"'"+" AND "+helper.COLUMN_PASSWORD+" = "+"'"+ user.password+"'";
+        Cursor cs=db.rawQuery(sql,null);
+        if (cs.moveToFirst())
+        {
+            int id = cs.getInt(0);
+            int money = cs.getInt(1);
+            user1= new User(id,money);
+        }
+        return user1;
     }
 
 
@@ -65,9 +77,6 @@ public class DataQuery {
         return lstUser;
     }
 
-    public static void GetUser(Context context, User loginUser) {
-    }
-
     public User checkLogin(Context context,String name,String password)
     {
         User user;
@@ -89,32 +98,9 @@ public class DataQuery {
         }
        return user;
     }
-    public static User GetUser(Context context,String username,String password)
-    {
-        DatabaseHandler helper = new DatabaseHandler(context);
-        SQLiteDatabase db = helper.getReadableDatabase();
-        String sql="SELECT * from "+helper.TABLE_NAME+" WHERE "+helper.COLUMN_USERNAME+" = "+"'"+username+"'"+" AND "+helper.COLUMN_PASSWORD+" = "+"'"+password+"'";
-        Cursor cs=db.rawQuery(sql,null);
-        if(cs != null)
-        {
-            cs.moveToFirst();
-        }
 
-        User user = new User(cs.getInt(0),cs.getString(1),cs.getString(2));
-        return  user;
-    }
 
-    public static User GetMoney(Context context,User user)
-    {
-        DatabaseHandler helper = new DatabaseHandler(context);
-        SQLiteDatabase db = helper.getReadableDatabase();
-        String sql = "SELECT * from "+helper.TABLE_NAME+" WHERE "+helper.COLUMN_USERNAME+" = "+"'"+user.getUserName()+"'";
-        Cursor cs = db.rawQuery(sql,null);
-        if(cs != null)
-        {
-            cs.moveToFirst();
-        }
-        User user1 = new User(cs.getInt(0),cs.getString(1),cs.getString(2),cs.getString(3));
-        return  user1;
-    }
+
+
+
 }

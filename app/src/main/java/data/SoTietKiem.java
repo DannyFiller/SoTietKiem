@@ -12,6 +12,13 @@ public class SoTietKiem {
         this.tienTietKiem = tienTietKiem;
     }
 
+    public SoTietKiem(int id,int idUser, String tenSo, int tienTietKiem) {
+        this.id=id;
+        this.idUser = idUser;
+        this.tenSo = tenSo;
+        this.tienTietKiem = tienTietKiem;
+    }
+
     public int getId() {
         return id;
     }

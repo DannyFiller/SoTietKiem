@@ -18,6 +18,8 @@ import com.example.sotietkiem.RegisterActivity;
 import com.example.sotietkiem.SignInActivity;
 import com.example.sotietkiem.fragment.HomeFragment;
 
+import java.util.function.IntToDoubleFunction;
+
 import data.DataQuery;
 import data.DatabaseHandler;
 import data.User;
@@ -45,19 +47,21 @@ public class NapActivity extends AppCompatActivity {
         btnXacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String sotien = edSoTien.getText().toString();
-                SignInActivity.loginUser.setMoney(Integer.parseInt(sotien));
-                DataQuery.insertMoney(NapActivity.this,SignInActivity.loginUser);
+                Cong();
 
                 Intent i = new Intent(NapActivity.this,MainActivity.class);
                 startActivity(i);
             }
         });
+    }
 
-
-
-
-
+    void Cong(){
+        String sotien = edSoTien.getText().toString();
+        int a = Integer.parseInt(sotien);
+        int b = SignInActivity.loginUser.getMoney();
+        int c = a +b;
+        SignInActivity.loginUser.setMoney(c);
+        DataQuery.insertMoney(NapActivity.this,SignInActivity.loginUser);
     }
 
 }

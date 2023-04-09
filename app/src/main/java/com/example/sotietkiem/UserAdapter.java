@@ -63,8 +63,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            imAvatar = itemView.findViewById(R.id.ivAvatar);
             tvName=itemView.findViewById(R.id.tvName);
         }
     }
