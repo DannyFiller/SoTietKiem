@@ -15,10 +15,13 @@ import com.example.sotietkiem.MainActivity;
 import com.example.sotietkiem.R;
 import com.example.sotietkiem.SignInActivity;
 
+import data.QuerySoTietKiem;
+import data.SoTietKiem;
+
 public class MoneyInActivity extends AppCompatActivity {
 
     Button btnGui;
-    EditText edTen,edSodu,edGuiTien;
+    EditText edTen,edSodu,edGuiTien,edNoiDung;
 
     AutoCompleteTextView acKyHanView;
     @Override
@@ -30,6 +33,7 @@ public class MoneyInActivity extends AppCompatActivity {
         edSodu = findViewById(R.id.edSodu);
         btnGui = findViewById(R.id.btnGui);
         edGuiTien = findViewById(R.id.edGuiTien);
+        edNoiDung = findViewById(R.id.edNoiDung);
 
         edTen.setText(SignInActivity.loginUser.getUserName());
         edSodu.setText(String.valueOf(SignInActivity.loginUser.getMoney()));
@@ -37,6 +41,10 @@ public class MoneyInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String soTienGui = edGuiTien.getText().toString().trim();
+                String noiDung = edNoiDung.getText().toString().trim();
+
+                SoTietKiem SoMoi = new SoTietKiem(SignInActivity.loginUser.getId(),noiDung,Integer.parseInt(soTienGui));
+                QuerySoTietKiem.insert(MoneyInActivity.this,SoMoi);
 
                 Intent i = new Intent(MoneyInActivity.this,MainActivity.class);
                 startActivity(i);

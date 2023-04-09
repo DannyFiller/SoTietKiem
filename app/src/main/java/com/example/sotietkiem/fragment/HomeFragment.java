@@ -2,11 +2,9 @@ package com.example.sotietkiem.fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -16,22 +14,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.sotietkiem.MainActivity;
 import com.example.sotietkiem.R;
 import com.example.sotietkiem.SignInActivity;
 import com.example.sotietkiem.UserAdapter;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 import InOut.MoneyInActivity;
 
 import InOut.NapActivity;
 import InOut.OutMoneyActivity;
-import data.DataQuery;
 import data.User;
-import data.Utils;
 
 
 public class HomeFragment extends Fragment implements UserAdapter.UserCallback{

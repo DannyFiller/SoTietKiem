@@ -1,26 +1,21 @@
 package com.example.sotietkiem.fragment;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import data.DataQuery;
 import data.DatabaseHandler;
 import data.User;
-import data.Utils;
 
 import com.example.sotietkiem.R;
 import com.example.sotietkiem.SignInActivity;
-import com.google.gson.Gson;
 
 //import data.DatabaseHandler;
 

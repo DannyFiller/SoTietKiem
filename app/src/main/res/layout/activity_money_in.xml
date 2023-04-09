@@ -91,7 +91,7 @@
         android:textStyle="bold"
         />
     <EditText
-        android:id="@+id/edNộidung"
+        android:id="@+id/edNoiDung"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/bg_lightgray"
