@@ -10,20 +10,15 @@ public class User implements Serializable {
     int money;
     String userName;
     String password;
-
-    public User(int id, int money) {
-        this.id = id;
-        this.money = money;
-    }
-
     String email;
-     String phoneNumber;
+    int phoneNumber;
 
-    public User(int id,String userName, String password, String email, String phoneNumber) {
+    public User(int id,String userName, String password,  int phoneNumber,String email,int money) {
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.money = money;
     }
 
     public User(int id, String userName, String password) {
@@ -48,6 +43,8 @@ public class User implements Serializable {
     {
         this.money = money;
     }
+
+
 
 
     public int getId() {
@@ -89,11 +86,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

@@ -1,13 +1,12 @@
 package data;
 
 public class Utils {
-
+    public static final String COLUMN_ID = "id";
     public static final String TABLE_NAME = "listUser";
     public static final String COLUMN_USERNAME ="username";
     public static final String COLUMN_PASSWORD ="password";
-
-    public static final String COLUMN_ID = "id";
-
+    public static final String COLUMN_PHONE ="phone";
+    public static final String COLUMN_GMAIL ="gmail";
     public static final String COLUMN_MONEY = "money";
 
 

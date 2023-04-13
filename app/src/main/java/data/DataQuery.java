@@ -1,18 +1,12 @@
 package data;
 
-import android.app.DownloadManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
-import com.example.sotietkiem.fragment.HistoryFragment;
-
 import java.util.ArrayList;
-import java.util.List;
-
-import InOut.NapActivity;
 
 public class DataQuery {
 
@@ -24,6 +18,8 @@ public class DataQuery {
         ContentValues values = new ContentValues();
         values.put(Utils.COLUMN_USERNAME,user.userName);
         values.put(Utils.COLUMN_PASSWORD,user.password);
+        values.put(Utils.COLUMN_PHONE,user.phoneNumber);
+        values.put(Utils.COLUMN_GMAIL,user.email);
         values.put(Utils.COLUMN_MONEY,50);
         long rs = db.insert(Utils.TABLE_NAME,null,values);
         return rs;
@@ -52,8 +48,13 @@ public class DataQuery {
         if (cs.moveToFirst())
         {
             int id = cs.getInt(0);
-            int money = cs.getInt(1);
-            user1= new User(id,money);
+            String username = cs.getString(1);
+            String pass = cs.getString(2);
+            int phone = cs.getInt(3);
+            String gmail = cs.getString(4);
+            int money = cs.getInt(5);
+
+            user1= new User(id, username, pass, money, gmail, money);
         }
         return user1;
     }
@@ -91,8 +92,10 @@ public class DataQuery {
             int id = cs.getInt(0);
             String username = cs.getString(1);
             String pass = cs.getString(2);
-            String money = cs.getString(3);
-            user= new User(id,username,pass,money);
+            int phone = cs.getInt(3);
+            String gmail = cs.getString(4);
+            int money = cs.getInt(5);
+            user= new User(id,username,pass,phone,gmail,money);
         }
         else {
             Toast.makeText(context, "Sai thong tin", Toast.LENGTH_SHORT).show();

@@ -52,13 +52,13 @@
         <TableRow>
             <Button
                 android:id="@+id/btnNapStk"
-                android:text="Gửi tiết kiệm"
+                android:text="Gửi tiết kiệm"/>
         </TableRow>
 
         <TableRow>
             <Button
                 android:id="@+id/btnRutTienStk"
-                android:text="Rút tiền tiết kiệm"
+                android:text="Rút tiền tiết kiệm"/>
         </TableRow>
     </TableLayout>
 
