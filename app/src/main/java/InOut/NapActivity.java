@@ -49,6 +49,7 @@ public class NapActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Cong();
 
+
                 Intent i = new Intent(NapActivity.this,MainActivity.class);
                 startActivity(i);
             }
@@ -63,5 +64,9 @@ public class NapActivity extends AppCompatActivity {
         SignInActivity.loginUser.setMoney(c);
         DataQuery.insertMoney(NapActivity.this,SignInActivity.loginUser);
     }
+
+
+
+
 
 }

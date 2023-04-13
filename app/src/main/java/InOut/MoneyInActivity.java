@@ -9,12 +9,17 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import com.example.sotietkiem.MainActivity;
 import com.example.sotietkiem.R;
 import com.example.sotietkiem.SignInActivity;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+
+import data.DataQuery;
 import data.QuerySoTietKiem;
 import data.SoTietKiem;
 
@@ -28,6 +33,7 @@ public class MoneyInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_money_in);
+
 
         edTen = findViewById(R.id.edTenUser);
         edSodu = findViewById(R.id.edSodu);
@@ -46,9 +52,25 @@ public class MoneyInActivity extends AppCompatActivity {
                 SoTietKiem SoMoi = new SoTietKiem(SignInActivity.loginUser.getId(),noiDung,Integer.parseInt(soTienGui));
                 QuerySoTietKiem.insert(MoneyInActivity.this,SoMoi);
 
-                Intent i = new Intent(MoneyInActivity.this,MainActivity.class);
-                startActivity(i);
+                if(Integer.parseInt(soTienGui) < SignInActivity.loginUser.getMoney())
+                {
+                    Tru();
+                    Intent i = new Intent(MoneyInActivity.this,MainActivity.class);
+                    startActivity(i);
+                }
+                else
+                {
+                    Toast.makeText(MoneyInActivity.this, "Tài khoản của bạn không đủ để gửi tiết kiệm", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+    }
+    void Tru(){
+        String sotien = edGuiTien.getText().toString();
+        int a = Integer.parseInt(sotien);
+        int b = SignInActivity.loginUser.getMoney();
+        int c = b - a;
+        SignInActivity.loginUser.setMoney(c);
+        DataQuery.insertMoney(MoneyInActivity.this,SignInActivity.loginUser);
     }
 }

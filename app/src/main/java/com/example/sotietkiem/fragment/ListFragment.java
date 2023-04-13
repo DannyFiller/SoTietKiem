@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.sotietkiem.ListAdapter;
 import com.example.sotietkiem.ListAdapter.ListViewHolder;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import InOut.DetailActivity;
+import data.DataQuery;
 import data.QuerySoTietKiem;
 import data.SoTietKiem;
 
@@ -51,10 +53,33 @@ import data.SoTietKiem;
     }
 
      @Override
-     public void OnItemClick(int id) {
+     public void OnItemClick(int id,SoTietKiem stk) {
         Intent i = new Intent(getActivity(), DetailActivity.class);
+        i.putExtra("ten",lstStk.get(id).getTenSo());
+        i.putExtra("tien",String.valueOf(lstStk.get(id).getTienTietKiem()));
         startActivity(i);
      }
+
+//     void resetData()
+//     {
+//         lstStk.clear();
+//         lstStk.addAll(DataQuery.getAll(getContext()));
+//         listAdapter.notifyDataSetChanged();
+//     }
+
+//     @Override
+//     public void DeleteClick(int id,SoTietKiem stk) {
+//         boolean rs = QuerySoTietKiem.delete(getActivity(), id);
+//         if(rs)
+//         {
+//             Toast.makeText(getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
+////             resetData();
+//         }
+//         else
+//         {
+//             Toast.makeText(getContext(), "Xóa thất bại", Toast.LENGTH_SHORT).show();
+//         }
+//     }
 
 
  }

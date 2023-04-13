@@ -94,17 +94,12 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.Navigation;
 
-import com.example.sotietkiem.fragment.HistoryFragment;
 import com.example.sotietkiem.fragment.HomeFragment;
 import com.example.sotietkiem.fragment.InfoFragment;
 import com.example.sotietkiem.fragment.ListFragment;
-import com.example.sotietkiem.fragment.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -117,18 +112,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mnBottom = findViewById(R.id.navMenu);
+        mnBottom = findViewById(R.id.navMenu);loadFragment(new HomeFragment());
+        mnBottom.setOnItemSelectedListener(getListener());
 
-        ActionBar actionBar = getSupportActionBar();
-        getSupportActionBar().setTitle("Main");
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ActionBar actionBar = getSupportActionBar();
+//        getSupportActionBar().setTitle("Main");
+//        actionBar.setDisplayHomeAsUpEnabled(true);
 
         //Load len fragment
 
 
 
-        loadFragment(new HomeFragment());
-        mnBottom.setOnItemSelectedListener(getListener());
 
 
     }

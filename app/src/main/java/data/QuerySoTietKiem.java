@@ -17,10 +17,10 @@ public class QuerySoTietKiem {
         DatabaseHandler helper = new DatabaseHandler(context);
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(helper.COLUMN_ID_USER, SignInActivity.loginUser.getId());
-        values.put(helper.COLUMN_NAME_SO,soMoi.getTenSo());
-        values.put(helper.COLUMN_MONEY_SO,soMoi.getTienTietKiem());
-        db.insert(helper.TABLE_NAME1,null,values);
+        values.put(Utils.COLUMN_ID_USER, SignInActivity.loginUser.getId());
+        values.put(Utils.COLUMN_NAME_SO,soMoi.getTenSo());
+        values.put(Utils.COLUMN_MONEY_SO,soMoi.getTienTietKiem());
+        db.insert(Utils.TABLE_NAME1,null,values);
         db.close();
     }
 
@@ -29,8 +29,8 @@ public class QuerySoTietKiem {
         ArrayList<SoTietKiem> lstStk = new ArrayList<>();
         DatabaseHandler helper = new DatabaseHandler(context);
         SQLiteDatabase db = helper.getReadableDatabase();
-        String sql="SELECT * from "+helper.TABLE_NAME1+" WHERE "
-                +helper.COLUMN_ID_USER
+        String sql="SELECT * from "+Utils.TABLE_NAME1+" WHERE "
+                +Utils.COLUMN_ID_USER
                 +" = "
                 +user.id
                 +";";
@@ -48,5 +48,13 @@ public class QuerySoTietKiem {
         }
         cs.close();
         return lstStk;
+    }
+
+    public static boolean delete(Context context , int id )
+    {
+        DatabaseHandler helper = new DatabaseHandler(context);
+        SQLiteDatabase sqLiteDatabase = helper.getWritableDatabase();
+        int rs = sqLiteDatabase.delete(Utils.TABLE_NAME1,Utils.COLUMN_ID_SOTIETKIEM+ "=?", new String[]{String.valueOf(id)});
+        return (rs>0);
     }
 }

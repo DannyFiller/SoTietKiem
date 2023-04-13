@@ -37,7 +37,7 @@ public class HistoryFragment extends Fragment implements UserAdapter.UserCallbac
 ////
         lstUser = DataQuery.getAll(getContext());
 //
-//(
+//
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         rvListC.setAdapter(userAdapter);
         rvListC.setLayoutManager(linearLayoutManager);

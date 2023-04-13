@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sotietkiem.fragment.ListFragment;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import data.SoTietKiem;
 
@@ -43,10 +46,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     @Override
     public void onBindViewHolder(@NonNull ListAdapter.ListViewHolder holder, int position) {
         SoTietKiem item =lstStk.get(position);
+        Calendar calendar = Calendar.getInstance();
+        String curDate = DateFormat.getDateInstance().format(calendar.getTime());
         holder.tvNameSo.setText(item.getTenSo());
-        holder.itemView.setOnClickListener(view -> listCallBack.OnItemClick(item.getId()))
-
-        ;
+//        holder.tvTien.setText(String.valueOf(item.getTienTietKiem()));
+        holder.tvTien.setText(curDate);
+        holder.itemView.setOnClickListener(view -> listCallBack.OnItemClick(position,item));
+//        holder.btnXoa.setOnClickListener(view -> listCallBack.DeleteClick(position,item));
     }
 
     @Override
@@ -55,15 +61,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNameSo;
+        TextView tvNameSo,tvTien;
+        Button btnXoa;
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNameSo = itemView.findViewById(R.id.tvName);
+            tvTien = itemView.findViewById(R.id.tvTienStk);
+//            btnXoa = itemView.findViewById(R.id.btXoa);
         }
     }
 
     public interface ListCallBack {
-        void OnItemClick(int id);
-        }
+        void OnItemClick(int id,SoTietKiem stk);
+//        void DeleteClick(int id,SoTietKiem stk);
+//        }
     }
+}
 

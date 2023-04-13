@@ -17,15 +17,17 @@ import InOut.NapActivity;
 public class DataQuery {
 
 
-    public static void insertUser(Context context, User user)
+    public static long insertUser(Context context, User user)
     {
         DatabaseHandler helper = new DatabaseHandler(context);
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(helper.COLUMN_USERNAME,user.userName);
-        values.put(helper.COLUMN_PASSWORD,user.password);
-        db.insert(helper.TABLE_NAME,null,values);
-        db.close();
+        values.put(Utils.COLUMN_USERNAME,user.userName);
+        values.put(Utils.COLUMN_PASSWORD,user.password);
+        values.put(Utils.COLUMN_MONEY,50);
+        long rs = db.insert(Utils.TABLE_NAME,null,values);
+        return rs;
+
     }
 
     public static void insertMoney(Context context,User user)
@@ -35,7 +37,7 @@ public class DataQuery {
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("money", user.getMoney());
-        db.update(helper.TABLE_NAME, values, "username=?", new String[]{user.getUserName()});
+        db.update(Utils.TABLE_NAME, values, "username=?", new String[]{user.getUserName()});
     }
 
     public User  UpdateMoney(Context context,User user)
@@ -45,7 +47,7 @@ public class DataQuery {
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("money", user.getMoney());
-        String sql="SELECT * from "+helper.TABLE_NAME+" WHERE "+helper.COLUMN_USERNAME+" = "+"'"+user.userName+"'"+" AND "+helper.COLUMN_PASSWORD+" = "+"'"+ user.password+"'";
+        String sql="SELECT * from "+Utils.TABLE_NAME+" WHERE "+Utils.COLUMN_USERNAME+" = "+"'"+user.userName+"'"+" AND "+Utils.COLUMN_PASSWORD+" = "+"'"+ user.password+"'";
         Cursor cs=db.rawQuery(sql,null);
         if (cs.moveToFirst())
         {
@@ -62,7 +64,7 @@ public class DataQuery {
         ArrayList<User> lstUser = new ArrayList<>();
         DatabaseHandler userDataHelper = new DatabaseHandler(context);
         SQLiteDatabase db = userDataHelper.getReadableDatabase();
-        Cursor cs = db.rawQuery("Select * from " + DatabaseHandler.TABLE_NAME,null);
+        Cursor cs = db.rawQuery("Select * from " + Utils.TABLE_NAME,null);
         cs.moveToFirst();
         while (!cs.isAfterLast())
         {
@@ -82,7 +84,7 @@ public class DataQuery {
         User user;
         DatabaseHandler helper = new DatabaseHandler(context);
         SQLiteDatabase db = helper.getReadableDatabase();
-        String sql="SELECT * from "+helper.TABLE_NAME+" WHERE "+helper.COLUMN_USERNAME+" = "+"'"+name+"'"+" AND "+helper.COLUMN_PASSWORD+" = "+"'"+password+"'";
+        String sql="SELECT * from "+Utils.TABLE_NAME+" WHERE "+Utils.COLUMN_USERNAME+" = "+"'"+name+"'"+" AND "+Utils.COLUMN_PASSWORD+" = "+"'"+password+"'";
         Cursor cs=db.rawQuery(sql,null);
         if (cs.moveToFirst())
         {
