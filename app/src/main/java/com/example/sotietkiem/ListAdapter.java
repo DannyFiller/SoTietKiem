@@ -46,11 +46,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     @Override
     public void onBindViewHolder(@NonNull ListAdapter.ListViewHolder holder, int position) {
         SoTietKiem item =lstStk.get(position);
-        Calendar calendar = Calendar.getInstance();
-        String curDate = DateFormat.getDateInstance().format(calendar.getTime());
+
         holder.tvNameSo.setText(item.getTenSo());
 //        holder.tvTien.setText(String.valueOf(item.getTienTietKiem()));
-        holder.tvTien.setText(curDate);
+//        holder.tvTien.setText(item.getDate());
         holder.itemView.setOnClickListener(view -> listCallBack.OnItemClick(position,item));
 //        holder.btnXoa.setOnClickListener(view -> listCallBack.DeleteClick(position,item));
     }
@@ -66,7 +65,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNameSo = itemView.findViewById(R.id.tvName);
-            tvTien = itemView.findViewById(R.id.tvTienStk);
+//            tvTien = itemView.findViewById(R.id.tvTienStk);
 //            btnXoa = itemView.findViewById(R.id.btXoa);
         }
     }

@@ -112,7 +112,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mnBottom = findViewById(R.id.navMenu);loadFragment(new HomeFragment());
+        mnBottom = findViewById(R.id.navMenu);
+        loadFragment(new HomeFragment());
+
+
         mnBottom.setOnItemSelectedListener(getListener());
 
 //        ActionBar actionBar = getSupportActionBar();
@@ -120,10 +123,6 @@ public class MainActivity extends AppCompatActivity {
 //        actionBar.setDisplayHomeAsUpEnabled(true);
 
         //Load len fragment
-
-
-
-
 
     }
 

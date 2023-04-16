@@ -50,19 +50,19 @@ public class RegisterActivity extends AppCompatActivity {
                 int phone = Integer.valueOf(edPhone.getText().toString().trim());
                 String gmail = edGmail.getText().toString().trim();
 
-                DataQuery query = new DataQuery();;
-                User CPuser = query.checkLogin(RegisterActivity.this,name,password);
+//                DataQuery query = new DataQuery();
+//                User CPuser = query.checkLogin(RegisterActivity.this,name,password);
 
-                if (CPuser!=null)
-                {
-                    Toast.makeText(RegisterActivity.this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
-                }
-                else{
+//                if (CPuser!=null)
+//                {
+//                    Toast.makeText(RegisterActivity.this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
+//                }
+//                else
+//                {
                     if(rePassword.equals(password))
                     {
                         User user = new User(0,name,password,phone,gmail,50);
                         DataQuery.insertUser(RegisterActivity.this,user);
-
                         Intent i = new Intent(RegisterActivity.this, SignInActivity.class  );
                         startActivity(i);
                     }
@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                     {
                         Toast.makeText(RegisterActivity.this, "Mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
                     }
-                }
+//                }
 
                 
             }

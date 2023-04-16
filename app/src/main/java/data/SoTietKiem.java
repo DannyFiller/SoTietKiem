@@ -5,18 +5,41 @@ public class SoTietKiem {
     int idUser;
     String tenSo;
     int tienTietKiem;
+    String date;
+    String daoHan;
 
-    public SoTietKiem(int idUser, String tenSo, int tienTietKiem) {
+
+
+    public SoTietKiem(int id, int idUser, String tenSo, int tienTietKiem,String date) {
+        this.id = id;
+        this.idUser = idUser;
+        this.tenSo = tenSo;
+        this.tienTietKiem = tienTietKiem;
+        this.date = date;
+    }
+
+    public SoTietKiem(int id, int idUser, String tenSo, int tienTietKiem) {
+        this.id=id;
         this.idUser = idUser;
         this.tenSo = tenSo;
         this.tienTietKiem = tienTietKiem;
     }
 
-    public SoTietKiem(int id,int idUser, String tenSo, int tienTietKiem) {
+    public SoTietKiem(int idUser, String tenSo, int tienTietKiem,String date) {
         this.id=id;
         this.idUser = idUser;
         this.tenSo = tenSo;
         this.tienTietKiem = tienTietKiem;
+        this.date = date;
+    }
+
+    public SoTietKiem(int idUser, String tenSo, int tienTietKiem,String date,String daohan) {
+        this.id=id;
+        this.idUser = idUser;
+        this.tenSo = tenSo;
+        this.tienTietKiem = tienTietKiem;
+        this.date = date;
+        this.daoHan =daohan;
     }
 
     public int getId() {
@@ -50,4 +73,17 @@ public class SoTietKiem {
     public void setTienTietKiem(int tienTietKiem) {
         this.tienTietKiem = tienTietKiem;
     }
+
+    public String getDate() {return date;}
+
+    public void setDate(String date) {this.date = date;}
+
+    public String getDaoHan() {
+        return daoHan;
+    }
+
+    public void setDaoHan(String daoHan) {
+        this.daoHan = daoHan;
+    }
+
 }

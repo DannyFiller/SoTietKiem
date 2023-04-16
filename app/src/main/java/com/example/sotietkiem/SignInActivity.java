@@ -52,8 +52,8 @@ public class SignInActivity extends AppCompatActivity {
 
                DatabaseHandler helper = new DatabaseHandler(SignInActivity.this);
                SQLiteDatabase db = helper.getWritableDatabase();
-               String username = edTaiKhoan.getText().toString().trim();
-               String password = edPassword.getText().toString().trim();
+//               String username = edTaiKhoan.getText().toString().trim();
+//               String password = edPassword.getText().toString().trim();
 
               checkUserLogin();
            }
@@ -75,14 +75,14 @@ public class SignInActivity extends AppCompatActivity {
         edPassword = findViewById(R.id.edPaswordLo);
 
         btDangKy = findViewById(R.id.btDangKy);
-
     }
 
     private void checkUserLogin() {
         DataQuery query=new DataQuery();
         loginUser=query.checkLogin(this,edTaiKhoan.getText().toString(),edPassword.getText().toString());
-        if (loginUser!=null)
+        if (loginUser != null)
         {
+            Toast.makeText(SignInActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(this,MainActivity.class);
             startActivity(intent);
         }

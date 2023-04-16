@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment implements UserAdapter.UserCallback{
         tvKetQua = v.findViewById(R.id.tvKetQua);
         tvTen = v.findViewById(R.id.tvTen );
         btnGuiTK=v.findViewById(R.id.tvbtnGuiTK);
-        btnRutTK= v.findViewById(R.id.tvbtnRut);
+//        btnRutTK= v.findViewById(R.id.tvbtnRut);
         btnNap = v.findViewById(R.id.tvbtnNap);
 
         String tienHienCo = String.valueOf(SignInActivity.loginUser.getMoney());
@@ -78,13 +78,13 @@ public class HomeFragment extends Fragment implements UserAdapter.UserCallback{
             }
         });
 
-        btnRutTK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), OutMoneyActivity.class);
-                startActivity(i);
-            }
-        });
+//        btnRutTK.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(getActivity(), OutMoneyActivity.class);
+//                startActivity(i);
+//            }
+//        });
 
         btnNap.setOnClickListener(new View.OnClickListener() {
             @Override

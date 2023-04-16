@@ -4,7 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.ContactsContract;
 import android.widget.Toast;
+
+import com.example.sotietkiem.SignInActivity;
 
 import java.util.ArrayList;
 
@@ -28,7 +31,6 @@ public class DataQuery {
 
     public static void insertMoney(Context context,User user)
     {
-
         DatabaseHandler helper = new DatabaseHandler(context);
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -87,8 +89,9 @@ public class DataQuery {
         SQLiteDatabase db = helper.getReadableDatabase();
         String sql="SELECT * from "+Utils.TABLE_NAME+" WHERE "+Utils.COLUMN_USERNAME+" = "+"'"+name+"'"+" AND "+Utils.COLUMN_PASSWORD+" = "+"'"+password+"'";
         Cursor cs=db.rawQuery(sql,null);
-        if (cs.moveToFirst())
+        if (cs != null)
         {
+            cs.moveToFirst();
             int id = cs.getInt(0);
             String username = cs.getString(1);
             String pass = cs.getString(2);

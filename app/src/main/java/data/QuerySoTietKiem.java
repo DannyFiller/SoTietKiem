@@ -20,9 +20,20 @@ public class QuerySoTietKiem {
         values.put(Utils.COLUMN_ID_USER, SignInActivity.loginUser.getId());
         values.put(Utils.COLUMN_NAME_SO,soMoi.getTenSo());
         values.put(Utils.COLUMN_MONEY_SO,soMoi.getTienTietKiem());
+        values.put(Utils.COLUMN_DATE,soMoi.getDate());
+        values.put(Utils.COLUMN_DAOHAN,soMoi.getDaoHan());
         db.insert(Utils.TABLE_NAME1,null,values);
         db.close();
     }
+
+//    public static void OutMoney(Context context,SoTietKiem stk)
+//    {
+//        DatabaseHandler helper = new DatabaseHandler();
+//        SQLiteDatabase db = helper.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(Utils.COLUMN_MONEY_SO,);
+//        }
+//    }
 
     public static ArrayList<SoTietKiem> ListSoTietKiem(Context context, User user)
     {
@@ -32,7 +43,7 @@ public class QuerySoTietKiem {
         String sql="SELECT * from "+Utils.TABLE_NAME1+" WHERE "
                 +Utils.COLUMN_ID_USER
                 +" = "
-                +user.id
+                +user.getId()
                 +";";
         Cursor cs=db.rawQuery(sql,null);
         cs.moveToFirst();

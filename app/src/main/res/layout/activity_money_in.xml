@@ -65,19 +65,31 @@
 <!--        android:prompt="spinner_title"-->
 <!--        />-->
 
-    <EditText
+    <TextView
         android:id="@+id/edPTĐH"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/bg_lightgray"
+        android:layout_height="wrap_content"
 
-        android:layout_marginTop="16dp"
-        android:hint="Phương thức đáo hạn"
+
+
+        android:text="Phương thức đáo hạn"
         android:textSize="18sp"
-        android:padding="16dp"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="8dp"
+
 
         android:textStyle="bold"
         />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
+
     <EditText
         android:id="@+id/edGuiTien"
         android:layout_width="match_parent"
