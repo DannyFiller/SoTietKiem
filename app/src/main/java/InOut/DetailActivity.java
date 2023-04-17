@@ -14,9 +14,13 @@ import android.widget.Toast;
 
 import com.example.sotietkiem.R;
 
+import org.w3c.dom.Text;
+
+import data.SoTietKiem;
+
 public class DetailActivity extends AppCompatActivity {
 
-    TextView tvTen,tvTien ;
+    TextView tvTen,tvTien,tvKyHan ;
     Button btnGuiStk,btnRutStk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +29,21 @@ public class DetailActivity extends AppCompatActivity {
 
         tvTen = findViewById(R.id.tvTenStkDetail);
         tvTien = findViewById(R.id.tvSoTienTietkiem);
+        tvKyHan = findViewById(R.id.tvKyHan);
 
         Bundle goi = getIntent().getExtras();
         String ten =goi.getString("ten");
         String tien =goi.getString("tien");
+        String kyHan = goi.getString("han");
+        String date = goi.getString("date");
+
+
+
 
         tvTen.setText(ten);
         tvTien.setText(tien+" VND");
+        tvKyHan.setText(date);
+
 
         btnGuiStk=findViewById(R.id.btnNapStk);
         btnRutStk=findViewById(R.id.btnRutTienStk);
@@ -56,7 +68,6 @@ public class DetailActivity extends AppCompatActivity {
         btnRutStk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
 

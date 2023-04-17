@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_main_scene"
     android:orientation="vertical"
-    android:background="@drawable/bg_lightgray"
+    android:background="@drawable/bg_lightblue"
     android:id="@+id/fmHome"
     tools:context=".fragment.HomeFragment">
 

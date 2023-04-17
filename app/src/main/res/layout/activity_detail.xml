@@ -5,61 +5,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="24dp"
+    android:background="@drawable/sgin_in_bg"
     tools:context="InOut.DetailActivity">
 
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sổ tiết kiệm"
-        android:textSize="48sp"
-        android:textAlignment="center"
-        android:textColor="@color/green"
-        android:textStyle="bold"/>
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        android:background="@drawable/edittextstyle">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sổ tiết kiệm"
+            android:padding="16dp"
+            android:textSize="48sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:textStyle="bold"/>
 
-        <TableRow>
-            <TextView
-                android:text="Tên sổ tiết kiệm"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
-        </TableRow>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TableRow>
-            <TextView
-                android:id="@+id/tvTenStkDetail"
-                android:textSize="32sp"/>
-        </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Tên sổ tiết kiệm"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:text="Số tiền tiết kiệm"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
-        </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvTenStkDetail"
+                    android:textSize="32sp"/>
+            </TableRow>
 
-        <TableRow>
-            <TextView
-                android:id="@+id/tvSoTienTietkiem"
-                android:textSize="32sp"/>
-        </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="Số tiền tiết kiệm"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+            </TableRow>
 
-        <TableRow>
-            <Button
-                android:id="@+id/btnNapStk"
-                android:text="Gửi tiết kiệm"/>
-        </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvSoTienTietkiem"
+                    android:textSize="32sp"/>
+            </TableRow>
 
-        <TableRow>
-            <Button
-                android:id="@+id/btnRutTienStk"
-                android:text="Rút tiền tiết kiệm"/>
-        </TableRow>
-    </TableLayout>
+            <TableRow>
+                <TextView
+                    android:text="Ngày gửi"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvKyHan"
+                    android:textColor="@color/black"
+                    android:textSize="32sp"/>
+            </TableRow>
+
+            <TableRow>
+                <Button
+                    android:id="@+id/btnNapStk"
+                    android:text="Gửi tiết kiệm"/>
+            </TableRow>
+
+            <TableRow>
+                <Button
+                    android:id="@+id/btnRutTienStk"
+                    android:text="Rút tiền tiết kiệm"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+
 
 </LinearLayout>

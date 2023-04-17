@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/light_gray"
+    android:background="@drawable/bg_lightblue"
     android:orientation="vertical"
     tools:context=".fragment.InfoFragment">
 
@@ -37,20 +37,58 @@
                 android:id="@+id/tvUserNameInfo"
                 android:text="ten"
                 android:padding="8dp"
+
                 android:textSize="24sp"/>
+            <ImageView
+                android:id="@+id/ivEditName"
+                android:src="@drawable/baseline_edit_24"
+                android:layout_gravity="center"/>
 
         </TableRow>
 
+<!--        <TableRow>-->
+<!--            <TextView-->
+<!--                android:text="Mật khẩu"-->
+<!--                android:textSize="24sp"/>-->
+<!--            <TextView-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:id="@+id/tvPasswordInfo"-->
+<!--                android:text="password"-->
+<!--                android:padding="8dp"-->
+<!--                android:textSize="24sp"/>-->
+<!--        </TableRow>-->
+
         <TableRow>
             <TextView
-                android:text="Mật khẩu"
+                android:text="Số diện thoại"
                 android:textSize="24sp"/>
             <TextView
                 android:layout_marginLeft="10dp"
-                android:id="@+id/tvPasswordInfo"
-                android:text="password"
+                android:id="@+id/tvPhoneInfo"
+                android:text="sdt"
                 android:padding="8dp"
                 android:textSize="24sp"/>
+            <ImageView
+                android:id="@+id/ivEditPhone"
+                android:src="@drawable/baseline_edit_24"
+                android:layout_gravity="center"/>
+        </TableRow>
+
+        <TableRow>
+        <TextView
+            android:text="Gmail"
+            android:textSize="24sp"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tvGmailInfo"
+            android:text="Gmail"
+            android:padding="8dp"
+            android:textSize="24sp"/>
+
+            <ImageView
+                android:id="@+id/ivEditGmail"
+                android:src="@drawable/baseline_edit_24"
+                android:layout_gravity="center"/>
         </TableRow>
 
     </TableLayout>

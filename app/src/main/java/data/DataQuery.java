@@ -38,6 +38,15 @@ public class DataQuery {
         db.update(Utils.TABLE_NAME, values, "username=?", new String[]{user.getUserName()});
     }
 
+    public static void UpdateName(Context context,User user)
+    {
+        DatabaseHandler helper = new DatabaseHandler(context);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", user.getUserName());
+        db.update(Utils.TABLE_NAME, values, "username=?", new String[]{user.getUserName()});
+    }
+
     public User  UpdateMoney(Context context,User user)
     {
         User user1 = null;

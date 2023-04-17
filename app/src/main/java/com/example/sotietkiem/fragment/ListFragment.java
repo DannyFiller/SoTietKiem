@@ -30,7 +30,7 @@ import data.SoTietKiem;
  public class ListFragment extends Fragment implements ListAdapter.ListCallBack{
 
     ListAdapter listAdapter;
-    ArrayList<SoTietKiem> lstStk;
+    static public ArrayList<SoTietKiem> lstStk;
     RecyclerView rcSoTietKiem;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,8 +46,6 @@ import data.SoTietKiem;
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rcSoTietKiem.setAdapter(listAdapter);
         rcSoTietKiem.setLayoutManager(layoutManager);
-
-
 //        rcSoTietKiem.setAdapter(new ListAdapter(getContext()));
         return v;
     }
@@ -57,6 +55,8 @@ import data.SoTietKiem;
         Intent i = new Intent(getActivity(), DetailActivity.class);
         i.putExtra("ten",lstStk.get(id).getTenSo());
         i.putExtra("tien",String.valueOf(lstStk.get(id).getTienTietKiem()));
+        i.putExtra("han",lstStk.get(id).getDaoHan());
+        i.putExtra("date",lstStk.get(id).getDate());
         startActivity(i);
      }
 

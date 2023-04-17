@@ -13,7 +13,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
     //tên và id database
-    private static final String DATABASE_NAME = "DATASTK";
+    private static final String DATABASE_NAME = "DATA";
     private static final int DATABASE_VERSION = 1;
 
     //Các cột trong database
@@ -52,7 +52,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + Utils.COLUMN_NAME_SO+" TEXT, "
                 + Utils.COLUMN_MONEY_SO + " INT,"
                 + Utils.COLUMN_DAOHAN + " TEXT,"
-                + Utils.COLUMN_DATE + " DATE "
+                + Utils.COLUMN_DATE + " TEXT "
                 +")";
         sqLiteDatabase.execSQL(CREATE_SoTietKiem_TABLE);
     }
