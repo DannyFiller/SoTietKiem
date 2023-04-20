@@ -4,8 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.sotietkiem.SignInActivity;
+import com.example.sotietkiem.fragment.ListFragment;
 
 import java.util.ArrayList;
 
@@ -24,6 +26,15 @@ public class QuerySoTietKiem {
         values.put(Utils.COLUMN_DAOHAN,soMoi.getDaoHan());
         db.insert(Utils.TABLE_NAME1,null,values);
         db.close();
+    }
+
+    public static void updateMoneySTK(Context context,int id)
+    {
+        DatabaseHandler helper = new DatabaseHandler(context);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("soTien", ListFragment.curList.getTienTietKiem());
+        db.update(Utils.TABLE_NAME1, values, "id=?", new String[]{String.valueOf(id)});
     }
 
 //    public static void OutMoney(Context context,SoTietKiem stk)
@@ -53,8 +64,10 @@ public class QuerySoTietKiem {
             int idUser = cs.getInt(1);
             String tenSo = cs.getString(2);
             int tienStk = cs.getInt(3);
+            String daoHan = cs.getString(4);
+            String date = cs.getString(5);
 
-            lstStk.add(new SoTietKiem(id,idUser,tenSo,tienStk));
+            lstStk.add(new SoTietKiem(id,idUser,tenSo,tienStk,date,daoHan));
             cs.moveToNext();
         }
         cs.close();

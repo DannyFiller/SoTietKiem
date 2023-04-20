@@ -91,5 +91,12 @@
                 android:layout_gravity="center"/>
         </TableRow>
 
-    </TableLayout>
+    </TableLayout>]
+
+    <Button
+        android:id="@+id/btnLgOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng xuất"
+        android:layout_gravity="center"/>
 </LinearLayout>

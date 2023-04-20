@@ -32,7 +32,9 @@ import data.SoTietKiem;
     ListAdapter listAdapter;
     static public ArrayList<SoTietKiem> lstStk;
     RecyclerView rcSoTietKiem;
-    @Override
+
+    static public SoTietKiem curList;
+     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -57,6 +59,7 @@ import data.SoTietKiem;
         i.putExtra("tien",String.valueOf(lstStk.get(id).getTienTietKiem()));
         i.putExtra("han",lstStk.get(id).getDaoHan());
         i.putExtra("date",lstStk.get(id).getDate());
+        curList = new SoTietKiem(lstStk.get(id).getId(),lstStk.get(id).getTenSo(),lstStk.get(id).getDate(),lstStk.get(id).getDaoHan(),lstStk.get(id).getTienTietKiem());
         startActivity(i);
      }
 

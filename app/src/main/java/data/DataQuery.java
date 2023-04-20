@@ -38,37 +38,37 @@ public class DataQuery {
         db.update(Utils.TABLE_NAME, values, "username=?", new String[]{user.getUserName()});
     }
 
-    public static void UpdateName(Context context,User user)
-    {
-        DatabaseHandler helper = new DatabaseHandler(context);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("name", user.getUserName());
-        db.update(Utils.TABLE_NAME, values, "username=?", new String[]{user.getUserName()});
-    }
+//    public static void UpdateName(Context context,User user)
+//    {
+//        DatabaseHandler helper = new DatabaseHandler(context);
+//        SQLiteDatabase db = helper.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put("name", user.getUserName());
+//        db.update(Utils.TABLE_NAME, values, "username=?", new String[]{user.getUserName()});
+//    }
 
-    public User  UpdateMoney(Context context,User user)
-    {
-        User user1 = null;
-        DatabaseHandler helper = new DatabaseHandler(context);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("money", user.getMoney());
-        String sql="SELECT * from "+Utils.TABLE_NAME+" WHERE "+Utils.COLUMN_USERNAME+" = "+"'"+user.userName+"'"+" AND "+Utils.COLUMN_PASSWORD+" = "+"'"+ user.password+"'";
-        Cursor cs=db.rawQuery(sql,null);
-        if (cs.moveToFirst())
-        {
-            int id = cs.getInt(0);
-            String username = cs.getString(1);
-            String pass = cs.getString(2);
-            int phone = cs.getInt(3);
-            String gmail = cs.getString(4);
-            int money = cs.getInt(5);
-
-            user1= new User(id, username, pass, money, gmail, money);
-        }
-        return user1;
-    }
+//    public User  UpdateMoney(Context context,User user)
+//    {
+//        User user1 = null;
+//        DatabaseHandler helper = new DatabaseHandler(context);
+//        SQLiteDatabase db = helper.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put("money", user.getMoney());
+//        String sql="SELECT * from "+Utils.TABLE_NAME+" WHERE "+Utils.COLUMN_USERNAME+" = "+"'"+user.userName+"'"+" AND "+Utils.COLUMN_PASSWORD+" = "+"'"+ user.password+"'";
+//        Cursor cs=db.rawQuery(sql,null);
+//        if (cs.moveToFirst())
+//        {
+//            int id = cs.getInt(0);
+//            String username = cs.getString(1);
+//            String pass = cs.getString(2);
+//            int phone = cs.getInt(3);
+//            String gmail = cs.getString(4);
+//            int money = cs.getInt(5);
+//
+//            user1= new User(id, username, pass, money, gmail, money);
+//        }
+//        return user1;
+//    }
 
 
     public static ArrayList<User> getAll(Context context)

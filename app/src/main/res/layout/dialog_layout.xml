@@ -5,11 +5,12 @@
     android:orientation="vertical">
 
     <EditText
+        android:padding="16dp"
         android:id="@+id/edRutStk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="nhập số tiền"
         android:textSize="20sp"
+        android:inputType="number"
         android:selectAllOnFocus="true"/>
-    
 </LinearLayout>

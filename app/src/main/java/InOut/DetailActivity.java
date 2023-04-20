@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +13,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sotietkiem.MainActivity;
 import com.example.sotietkiem.R;
+import com.example.sotietkiem.SignInActivity;
+import com.example.sotietkiem.fragment.HomeFragment;
+import com.example.sotietkiem.fragment.ListFragment;
 
 import org.w3c.dom.Text;
 
+import data.DataQuery;
+import data.QuerySoTietKiem;
 import data.SoTietKiem;
 
 public class DetailActivity extends AppCompatActivity {
@@ -41,8 +48,9 @@ public class DetailActivity extends AppCompatActivity {
 
 
         tvTen.setText(ten);
-        tvTien.setText(tien+" VND");
+        tvTien.setText(tien +" VND");
         tvKyHan.setText(date);
+
 
 
         btnGuiStk=findViewById(R.id.btnNapStk);
@@ -53,25 +61,48 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(DetailActivity.this);
-                alertDialog.setTitle("Rút tiền");
-                LayoutInflater inflater = DetailActivity.this.getLayoutInflater();
-                View dialogView =inflater.inflate(R.layout.dialog_layout,null);
+                alertDialog.setTitle("Gửi tiền");
+//                LayoutInflater inflater = DetailActivity.this.getLayoutInflater();
+                View dialogView =getLayoutInflater().inflate(R.layout.dialog_layout,null);
                 alertDialog.setView(dialogView);
-                EditText edRut = findViewById(R.id.edRutStk);
+                EditText edTien = (EditText) dialogView.findViewById(R.id.edRutStk);
 
-                alertDialog.setPositiveButton("Dông Ý",(dialog,which) -> {
-                    String name = edRut.getText().toString();
+
+                alertDialog.setPositiveButton("OK", (dialog, which) -> {
+                    String tien = edTien.getText().toString();
+                    int tienGui = Integer.valueOf(tien);
+                    CongStk(tienGui);
+                    dialog.dismiss();
+                    Intent i = new Intent(DetailActivity.this, MainActivity.class);
+                    startActivity(i);
                 });
+                // create and show the alert dialog
+                AlertDialog dialog = alertDialog.create();
+                dialog.show();
             }
         });
 
         btnRutStk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(DetailActivity.this, String.valueOf(ListFragment.curList.getDaoHan()), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    void CongStk(int tienGui){
+        int accMoney = SignInActivity.loginUser.getMoney();
+        int temp = accMoney - tienGui;
+        SignInActivity.loginUser.setMoney(temp);
+        int a = ListFragment.curList.getTienTietKiem();
+        int c = a + tienGui;
+        ListFragment.curList.setTienTietKiem(c);
+        DataQuery.insertMoney(DetailActivity.this,SignInActivity.loginUser);
+        QuerySoTietKiem.updateMoneySTK(DetailActivity.this,ListFragment.curList.getId());
+
 
     }
+
 
 //    void addUserDialog(){
 //        AlertDialog.Builder alertDialog = new AlertDialog.Builder(DetailActivity.this);
@@ -88,4 +119,6 @@ public class DetailActivity extends AppCompatActivity {
 //        alertDialog.create();
 //        alertDialog.show();
 //    }
+
+
 }

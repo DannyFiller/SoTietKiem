@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,8 @@ import com.example.sotietkiem.SignInActivity;
 public class InfoFragment extends Fragment {
     TextView tvTen,tvPassword,tvPhone,tvGmail;
     ImageView ivEditName,ivEditPhone,ivEditGmail;
+
+    Button btnLgOut;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class InfoFragment extends Fragment {
         ivEditName = v.findViewById(R.id.ivEditName);
         ivEditPhone = v.findViewById(R.id.ivEditPhone);
         ivEditGmail = v.findViewById(R.id.ivEditGmail);
+        btnLgOut = v.findViewById(R.id.btnLgOut);
 
         //lấy thông tin từ Intent SignIn
 
@@ -52,6 +56,15 @@ public class InfoFragment extends Fragment {
 //
 //            }
 //        });
+
+        btnLgOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(),SignInActivity.class);
+                startActivity(i);
+                SignInActivity.loginUser = null;
+            }
+        });
 
         return v;
     }
