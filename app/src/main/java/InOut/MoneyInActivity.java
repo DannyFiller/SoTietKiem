@@ -69,10 +69,11 @@ public class MoneyInActivity extends AppCompatActivity {
                 String curDate = DateFormat.getDateInstance().format(calendar.getTime());
 
                 SoTietKiem SoMoi = new SoTietKiem(SignInActivity.loginUser.getId(),noiDung,Integer.parseInt(soTienGui),curDate,daoHan);
-                QuerySoTietKiem.insert(MoneyInActivity.this,SoMoi);
+
 
                 if(Integer.parseInt(soTienGui) < SignInActivity.loginUser.getMoney())
                 {
+                    QuerySoTietKiem.insert(MoneyInActivity.this,SoMoi);
                     Tru();
                     Intent i = new Intent(MoneyInActivity.this,MainActivity.class);
                     startActivity(i);

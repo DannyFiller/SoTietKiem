@@ -27,7 +27,7 @@ import data.SoTietKiem;
 
 public class DetailActivity extends AppCompatActivity {
 
-    TextView tvTen,tvTien,tvKyHan ;
+    TextView tvTen,tvTien,tvKyHan,tvNgayGui ;
     Button btnGuiStk,btnRutStk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class DetailActivity extends AppCompatActivity {
         tvTen = findViewById(R.id.tvTenStkDetail);
         tvTien = findViewById(R.id.tvSoTienTietkiem);
         tvKyHan = findViewById(R.id.tvKyHan);
+        tvNgayGui = findViewById(R.id.tvNgayGui);
 
         Bundle goi = getIntent().getExtras();
         String ten =goi.getString("ten");
@@ -49,7 +50,9 @@ public class DetailActivity extends AppCompatActivity {
 
         tvTen.setText(ten);
         tvTien.setText(tien +" VND");
-        tvKyHan.setText(date);
+        tvKyHan.setText(kyHan);
+        tvNgayGui.setText(date);
+
 
 
 
@@ -75,6 +78,7 @@ public class DetailActivity extends AppCompatActivity {
                     dialog.dismiss();
                     Intent i = new Intent(DetailActivity.this, MainActivity.class);
                     startActivity(i);
+                    Toast.makeText(DetailActivity.this, "Gửi tiền thành công", Toast.LENGTH_SHORT).show();
                 });
                 // create and show the alert dialog
                 AlertDialog dialog = alertDialog.create();
@@ -85,7 +89,26 @@ public class DetailActivity extends AppCompatActivity {
         btnRutStk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DetailActivity.this, String.valueOf(ListFragment.curList.getDaoHan()), Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(DetailActivity.this);
+                alertDialog.setTitle("Gửi tiền");
+//                LayoutInflater inflater = DetailActivity.this.getLayoutInflater();
+                View dialogView =getLayoutInflater().inflate(R.layout.dialog_layout,null);
+                alertDialog.setView(dialogView);
+                EditText edTien = (EditText) dialogView.findViewById(R.id.edRutStk);
+
+
+                alertDialog.setPositiveButton("OK", (dialog, which) -> {
+                    String tien = edTien.getText().toString();
+                    int tienRut = Integer.valueOf(tien);
+                    TruStk(tienRut);
+                    dialog.dismiss();
+                    Intent i = new Intent(DetailActivity.this, MainActivity.class);
+                    startActivity(i);
+                    Toast.makeText(DetailActivity.this, "Rút tiền thành công", Toast.LENGTH_SHORT).show();
+                });
+                // create and show the alert dialog
+                AlertDialog dialog = alertDialog.create();
+                dialog.show();
             }
         });
     }
@@ -99,8 +122,18 @@ public class DetailActivity extends AppCompatActivity {
         ListFragment.curList.setTienTietKiem(c);
         DataQuery.insertMoney(DetailActivity.this,SignInActivity.loginUser);
         QuerySoTietKiem.updateMoneySTK(DetailActivity.this,ListFragment.curList.getId());
+    }
 
-
+    void TruStk(int tienRut)
+    {
+        int accMoney = SignInActivity.loginUser.getMoney();
+        int temp = accMoney + tienRut;
+        SignInActivity.loginUser.setMoney(temp);
+        int a = ListFragment.curList.getTienTietKiem();
+        int c = a - tienRut;
+        ListFragment.curList.setTienTietKiem(c);
+        DataQuery.insertMoney(DetailActivity.this,SignInActivity.loginUser);
+        QuerySoTietKiem.updateMoneySTK(DetailActivity.this,ListFragment.curList.getId());
     }
 
 

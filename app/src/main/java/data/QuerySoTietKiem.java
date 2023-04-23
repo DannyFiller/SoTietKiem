@@ -74,6 +74,36 @@ public class QuerySoTietKiem {
         return lstStk;
     }
 
+    public static ArrayList<String> ListTenSoTietKiem(Context context, User user)
+    {
+        ArrayList<SoTietKiem> lstStk = new ArrayList<>();
+        ArrayList<String> listTen = new ArrayList<>();
+        DatabaseHandler helper = new DatabaseHandler(context);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        String sql="SELECT * from "+Utils.TABLE_NAME1+" WHERE "
+                +Utils.COLUMN_ID_USER
+                +" = "
+                +user.getId()
+                +";";
+        Cursor cs=db.rawQuery(sql,null);
+        cs.moveToFirst();
+        while (!cs.isAfterLast())
+        {
+            int id = cs.getInt(0);
+            int idUser = cs.getInt(1);
+            String tenSo = cs.getString(2);
+            int tienStk = cs.getInt(3);
+            String daoHan = cs.getString(4);
+            String date = cs.getString(5);
+
+            lstStk.add(new SoTietKiem(id,idUser,tenSo,tienStk,date,daoHan));
+            listTen.add(tenSo);
+            cs.moveToNext();
+        }
+        cs.close();
+        return listTen;
+    }
+
     public static boolean delete(Context context , int id )
     {
         DatabaseHandler helper = new DatabaseHandler(context);

@@ -60,7 +60,7 @@
 
             <TableRow>
                 <TextView
-                    android:text="Ngày gửi"
+                    android:text="Kỳ hạn"
                     android:textSize="32sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
@@ -69,19 +69,37 @@
             <TableRow>
                 <TextView
                     android:id="@+id/tvKyHan"
-                    android:textColor="@color/black"
+
                     android:textSize="32sp"/>
             </TableRow>
 
             <TableRow>
+                <TextView
+                    android:text="Ngày gửi"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvNgayGui"
+                    android:textSize="32sp"/>
+            </TableRow>
+
+
+
+            <TableRow>
                 <Button
                     android:id="@+id/btnNapStk"
+                    android:textSize="16sp"
                     android:text="Gửi tiết kiệm"/>
             </TableRow>
 
             <TableRow>
                 <Button
                     android:id="@+id/btnRutTienStk"
+                    android:textSize="16sp"
                     android:text="Rút tiền tiết kiệm"/>
             </TableRow>
         </TableLayout>
