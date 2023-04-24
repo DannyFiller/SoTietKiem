@@ -86,7 +86,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void checkUserLogin() {
         DataQuery query=new DataQuery();
-        loginUser=query.checkLogin(this,edTaiKhoan.getText().toString(),edPassword.getText().toString());
+        loginUser=query.checkLogin(this,edTaiKhoan.getText().toString().trim(),edPassword.getText().toString().trim());
         if (loginUser != null)
         {
             Toast.makeText(SignInActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();

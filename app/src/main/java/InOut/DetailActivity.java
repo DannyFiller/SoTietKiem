@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sotietkiem.ListAdapter;
 import com.example.sotietkiem.MainActivity;
 import com.example.sotietkiem.R;
 import com.example.sotietkiem.SignInActivity;
@@ -28,7 +29,7 @@ import data.SoTietKiem;
 public class DetailActivity extends AppCompatActivity {
 
     TextView tvTen,tvTien,tvKyHan,tvNgayGui ;
-    Button btnGuiStk,btnRutStk;
+    Button btnGuiStk,btnRutStk,btnXoaStk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,7 @@ public class DetailActivity extends AppCompatActivity {
 
         btnGuiStk=findViewById(R.id.btnNapStk);
         btnRutStk=findViewById(R.id.btnRutTienStk);
+        btnXoaStk=findViewById(R.id.btnXoaStk);
 
 //        btnRutStk.setOnClickListener(view -> addUserDialog());
         btnGuiStk.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +78,9 @@ public class DetailActivity extends AppCompatActivity {
                     int tienGui = Integer.valueOf(tien);
                     CongStk(tienGui);
                     dialog.dismiss();
-                    Intent i = new Intent(DetailActivity.this, MainActivity.class);
-                    startActivity(i);
+//                    Intent i = new Intent(DetailActivity.this, MainActivity.class);
+//                    startActivity(i);
+                    tvTien.setText(String.valueOf(ListFragment.curList.getTienTietKiem()) + " VND");
                     Toast.makeText(DetailActivity.this, "Gửi tiền thành công", Toast.LENGTH_SHORT).show();
                 });
                 // create and show the alert dialog
@@ -102,13 +105,28 @@ public class DetailActivity extends AppCompatActivity {
                     int tienRut = Integer.valueOf(tien);
                     TruStk(tienRut);
                     dialog.dismiss();
-                    Intent i = new Intent(DetailActivity.this, MainActivity.class);
-                    startActivity(i);
+//                    Intent i = new Intent(DetailActivity.this, MainActivity.class);
+//                    startActivity(i);
+                    tvTien.setText(String.valueOf(ListFragment.curList.getTienTietKiem()) + " VND");
                     Toast.makeText(DetailActivity.this, "Rút tiền thành công", Toast.LENGTH_SHORT).show();
                 });
                 // create and show the alert dialog
                 AlertDialog dialog = alertDialog.create();
                 dialog.show();
+            }
+        });
+
+        btnXoaStk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RutTatCaTien(ListFragment.curList.getTienTietKiem());
+                QuerySoTietKiem.deleteStk(DetailActivity.this,ListFragment.curList.getId());
+//                Intent i = new Intent(DetailActivity.this,MainActivity.class);
+                finish();
+                Toast.makeText(DetailActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+//                ListFragment.lstStk.clear();
+                ListFragment.lstStk = QuerySoTietKiem.ListSoTietKiem(DetailActivity.this, SignInActivity.loginUser);
+                ListFragment.listAdapter.notifyDataSetChanged();
             }
         });
     }
@@ -124,6 +142,8 @@ public class DetailActivity extends AppCompatActivity {
         QuerySoTietKiem.updateMoneySTK(DetailActivity.this,ListFragment.curList.getId());
     }
 
+
+
     void TruStk(int tienRut)
     {
         int accMoney = SignInActivity.loginUser.getMoney();
@@ -136,6 +156,14 @@ public class DetailActivity extends AppCompatActivity {
         QuerySoTietKiem.updateMoneySTK(DetailActivity.this,ListFragment.curList.getId());
     }
 
+    void RutTatCaTien(int tien)
+    {
+        int a = ListFragment.curList.getTienTietKiem();
+        int b = SignInActivity.loginUser.getMoney();
+        int c = a + b;
+        SignInActivity.loginUser.setMoney(c);
+        DataQuery.insertMoney(DetailActivity.this,SignInActivity.loginUser);
+    }
 
 //    void addUserDialog(){
 //        AlertDialog.Builder alertDialog = new AlertDialog.Builder(DetailActivity.this);

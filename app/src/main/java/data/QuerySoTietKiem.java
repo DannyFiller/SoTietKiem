@@ -104,11 +104,11 @@ public class QuerySoTietKiem {
         return listTen;
     }
 
-    public static boolean delete(Context context , int id )
+    public static void deleteStk(Context context , int id )
     {
         DatabaseHandler helper = new DatabaseHandler(context);
         SQLiteDatabase sqLiteDatabase = helper.getWritableDatabase();
-        int rs = sqLiteDatabase.delete(Utils.TABLE_NAME1,Utils.COLUMN_ID_SOTIETKIEM+ "=?", new String[]{String.valueOf(id)});
-        return (rs>0);
+        sqLiteDatabase.delete(Utils.TABLE_NAME1,Utils.COLUMN_ID_SOTIETKIEM+ "=?", new String[]{String.valueOf(id)});
+
     }
 }

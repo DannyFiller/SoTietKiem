@@ -33,7 +33,7 @@ import data.SoTietKiem;
 
  public class ListFragment extends Fragment implements ListAdapter.ListCallBack{
 
-    ListAdapter listAdapter;
+    public static ListAdapter listAdapter;
     static public ArrayList<SoTietKiem> lstStk;
     RecyclerView rcSoTietKiem;
 

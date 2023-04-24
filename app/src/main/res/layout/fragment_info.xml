@@ -39,7 +39,7 @@
                 android:padding="8dp"
 
                 android:textSize="24sp"/>
-            <ImageView
+            <ImageButton
                 android:id="@+id/ivEditName"
                 android:src="@drawable/baseline_edit_24"
                 android:layout_gravity="center"/>
@@ -68,7 +68,7 @@
                 android:text="sdt"
                 android:padding="8dp"
                 android:textSize="24sp"/>
-            <ImageView
+            <ImageButton
                 android:id="@+id/ivEditPhone"
                 android:src="@drawable/baseline_edit_24"
                 android:layout_gravity="center"/>
@@ -85,7 +85,7 @@
             android:padding="8dp"
             android:textSize="24sp"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/ivEditGmail"
                 android:src="@drawable/baseline_edit_24"
                 android:layout_gravity="center"/>

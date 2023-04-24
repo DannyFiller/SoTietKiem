@@ -102,6 +102,13 @@
                     android:textSize="16sp"
                     android:text="Rút tiền tiết kiệm"/>
             </TableRow>
+
+            <TableRow>
+                <Button
+                    android:id="@+id/btnXoaStk"
+                    android:textSize="16sp"
+                    android:text="Xóa sổ tiết kiệm"/>
+            </TableRow>
         </TableLayout>
     </LinearLayout>
 

@@ -93,6 +93,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -138,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
 //        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
 //            public boolean onQueryTextSubmit(String query) {
+//                ListAdapter.().filter(query);
 //                return false;
 //            }
 //
@@ -188,7 +190,4 @@ public class MainActivity extends AppCompatActivity {
         fmTran.addToBackStack(null);
         fmTran.commit();
     }
-
-
-
 }

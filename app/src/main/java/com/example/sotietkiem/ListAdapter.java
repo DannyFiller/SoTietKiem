@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sotietkiem.fragment.ListFragment;
 
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,6 +26,7 @@ import data.SoTietKiem;
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
 
     ArrayList<SoTietKiem> lstStk;
+    ArrayList<SoTietKiem> listFind;
     Context context;
     ListCallBack listCallBack;
 
@@ -74,43 +76,44 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         }
     }
 
-    public Filter getFiller(){
-        return filler;
-    }
-
-    Filter filler = new Filter() {
-        // run on background
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            List<SoTietKiem> fillerlist = new ArrayList<>();
-            List<String> list = new ArrayList<>();
-
-            if(charSequence.toString().isEmpty()){
-                list.addAll(QuerySoTietKiem.ListTenSoTietKiem(context,SignInActivity.loginUser));
-            }
-            else
-            {
-                for(String stk: QuerySoTietKiem.ListTenSoTietKiem(context,SignInActivity.loginUser))
-                {
-                    if(stk.toLowerCase().contains(charSequence.toString().toLowerCase()))
-                    {
-                        list.add(stk);
-                    }
-                }
-            }
-            FilterResults filterResults = new FilterResults();
-            filterResults.values = fillerlist;
-            return  filterResults;
-        }
-
-        //run on ui
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            lstStk.clear();
-            lstStk.addAll((Collection<? extends SoTietKiem>) filterResults.values);
-            notifyDataSetChanged();
-        }
-    };
+//    public Filter getFiller(){
+//
+//        return filler;
+//    }
+//
+//    Filter filler = new Filter() {
+//        // run on background
+//        @Override
+//        protected FilterResults performFiltering(CharSequence charSequence) {
+//            if(charSequence.toString().isEmpty()){
+////                list.addAll(QuerySoTietKiem.ListTenSoTietKiem(context,SignInActivity.loginUser));
+//                lstStk = listFind;
+//            }
+//            else
+//            {
+//                ArrayList<SoTietKiem> list = new ArrayList<>();
+//                for(SoTietKiem stk : listFind)
+//                {
+//                    if(stk.getTenSo().toLowerCase().contains(charSequence.toString().toLowerCase()))
+//                    {
+//                        list.add(stk);
+//                    }
+//                }
+//                lstStk = list;
+//            }
+//            FilterResults filterResults = new FilterResults();
+//            filterResults.values = lstStk;
+//            return  filterResults;
+//        }
+//
+//        //run on ui
+//        @Override
+//        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+//            lstStk = (ArrayList<SoTietKiem>) filterResults.values;
+////            lstStk.addAll((Collection<? extends SoTietKiem>) filterResults.values);
+//            notifyDataSetChanged();
+//        }
+//    };
 
 
 

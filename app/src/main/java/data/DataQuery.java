@@ -38,6 +38,33 @@ public class DataQuery {
         db.update(Utils.TABLE_NAME, values, "username=?", new String[]{user.getUserName()});
     }
 
+    public static void UpdateName(Context context,User user)
+    {
+        DatabaseHandler helper = new DatabaseHandler(context);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("username", user.getUserName());
+        db.update(Utils.TABLE_NAME, values, "id=?", new String[]{String.valueOf(user.getId())});
+    }
+
+    public static void UpdateGmail(Context context,User user)
+    {
+        DatabaseHandler helper = new DatabaseHandler(context);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("gmail", user.getEmail());
+        db.update(Utils.TABLE_NAME, values, "id=?", new String[]{String.valueOf(user.getId())});
+    }
+
+    public static void UpdatePhone(Context context,User user)
+    {
+        DatabaseHandler helper = new DatabaseHandler(context);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("phone", user.getPhoneNumber());
+        db.update(Utils.TABLE_NAME, values, "id=?", new String[]{String.valueOf(user.getId())});
+    }
+
 //    public static void UpdateName(Context context,User user)
 //    {
 //        DatabaseHandler helper = new DatabaseHandler(context);
