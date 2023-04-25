@@ -4,15 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.ContactsContract;
 import android.widget.Toast;
-
-import com.example.sotietkiem.SignInActivity;
 
 import java.util.ArrayList;
 
 public class DataQuery {
 
+    public static int exist;
 
     public static long insertUser(Context context, User user)
     {
@@ -118,15 +116,17 @@ public class DataQuery {
         return lstUser;
     }
 
-    public User checkLogin(Context context,String name,String password)
+    public User checkLogin(Context context,String name)
     {
         User user;
         DatabaseHandler helper = new DatabaseHandler(context);
         SQLiteDatabase db = helper.getReadableDatabase();
-        String sql="SELECT * from "+Utils.TABLE_NAME+" WHERE "+Utils.COLUMN_USERNAME+" = "+"'"+name+"'"+" AND "+Utils.COLUMN_PASSWORD+" = "+"'"+password+"'";
+        String sql="SELECT * from "+Utils.TABLE_NAME+" WHERE "+Utils.COLUMN_USERNAME+" = "+"'"+name+"'";
         Cursor cs=db.rawQuery(sql,null);
-        if (cs != null)
+
+        if (cs.getCount() > 0)
         {
+            exist = 1;
             cs.moveToFirst();
             int id = cs.getInt(0);
             String username = cs.getString(1);
@@ -136,9 +136,14 @@ public class DataQuery {
             int money = cs.getInt(5);
             user= new User(id,username,pass,phone,gmail,money);
         }
-        else {
-            Toast.makeText(context, "Sai thong tin", Toast.LENGTH_SHORT).show();
-            user= null;
+        else
+        {
+            if(cs.getCount() == 0)
+            {
+                exist = 0;
+                Toast.makeText(context, "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
+            }
+            user = null;
         }
        return user;
     }

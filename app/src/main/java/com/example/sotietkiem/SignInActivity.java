@@ -86,15 +86,26 @@ public class SignInActivity extends AppCompatActivity {
 
     private void checkUserLogin() {
         DataQuery query=new DataQuery();
-        loginUser=query.checkLogin(this,edTaiKhoan.getText().toString().trim(),edPassword.getText().toString().trim());
-        if (loginUser != null)
+        User user = query.checkLogin(this,edTaiKhoan.getText().toString().trim());
+
+        if(query.exist == 1)
         {
-            Toast.makeText(SignInActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-            Intent intent=new Intent(this,MainActivity.class);
-            startActivity(intent);
+            if(edPassword.getText().toString().trim().equals(user.getPassword()))
+            {
+                Toast.makeText(SignInActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                loginUser = user;
+                Intent intent=new Intent(this,MainActivity.class);
+                startActivity(intent);
+            }
+            else
+            {
+                Toast.makeText(SignInActivity.this, "mật khẩu sai", Toast.LENGTH_SHORT).show();
+            }
         }
-        else {
-            Toast.makeText(SignInActivity.this, "Dang nhap that bai", Toast.LENGTH_SHORT).show();
+
+        else
+        {
+            Toast.makeText(SignInActivity.this, "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
         }
     }
 }

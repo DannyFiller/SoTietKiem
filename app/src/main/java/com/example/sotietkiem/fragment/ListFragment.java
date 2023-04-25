@@ -94,7 +94,7 @@ import data.SoTietKiem;
          }
          
          if(filterList.isEmpty()){
-             Toast.makeText(getContext(), "không tìm thấy sổ", Toast.LENGTH_SHORT).show();
+
          }
          else {
              setFilteredList(filterList);

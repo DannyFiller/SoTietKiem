@@ -76,12 +76,17 @@ public class DetailActivity extends AppCompatActivity {
                 alertDialog.setPositiveButton("OK", (dialog, which) -> {
                     String tien = edTien.getText().toString();
                     int tienGui = Integer.valueOf(tien);
-                    CongStk(tienGui);
-                    dialog.dismiss();
-//                    Intent i = new Intent(DetailActivity.this, MainActivity.class);
-//                    startActivity(i);
-                    tvTien.setText(String.valueOf(ListFragment.curList.getTienTietKiem()) + " VND");
-                    Toast.makeText(DetailActivity.this, "Gửi tiền thành công", Toast.LENGTH_SHORT).show();
+                    if(tienGui>SignInActivity.loginUser.getMoney())
+                    {
+                        Toast.makeText(DetailActivity.this, "Tài khoản của bạn không đủ tiển", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        CongStk(tienGui);
+                        dialog.dismiss();
+                        tvTien.setText(String.valueOf(ListFragment.curList.getTienTietKiem()) + " VND");
+                        Toast.makeText(DetailActivity.this, "Gửi tiền thành công", Toast.LENGTH_SHORT).show();
+                    }
                 });
                 // create and show the alert dialog
                 AlertDialog dialog = alertDialog.create();
@@ -103,12 +108,19 @@ public class DetailActivity extends AppCompatActivity {
                 alertDialog.setPositiveButton("OK", (dialog, which) -> {
                     String tien = edTien.getText().toString();
                     int tienRut = Integer.valueOf(tien);
-                    TruStk(tienRut);
-                    dialog.dismiss();
+                    if(tienRut > ListFragment.curList.getTienTietKiem())
+                    {
+                        Toast.makeText(DetailActivity.this, "Sổ tiết kiệm của bạn không đủ tiền", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        TruStk(tienRut);
+                        dialog.dismiss();
 //                    Intent i = new Intent(DetailActivity.this, MainActivity.class);
 //                    startActivity(i);
-                    tvTien.setText(String.valueOf(ListFragment.curList.getTienTietKiem()) + " VND");
-                    Toast.makeText(DetailActivity.this, "Rút tiền thành công", Toast.LENGTH_SHORT).show();
+                        tvTien.setText(String.valueOf(ListFragment.curList.getTienTietKiem()) + " VND");
+                        Toast.makeText(DetailActivity.this, "Rút tiền thành công", Toast.LENGTH_SHORT).show();
+                    }
                 });
                 // create and show the alert dialog
                 AlertDialog dialog = alertDialog.create();
