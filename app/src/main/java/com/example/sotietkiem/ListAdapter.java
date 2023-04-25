@@ -25,10 +25,11 @@ import data.SoTietKiem;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
 
-    ArrayList<SoTietKiem> lstStk;
-    ArrayList<SoTietKiem> listFind;
+    public static ArrayList<SoTietKiem> lstStk;
     Context context;
     ListCallBack listCallBack;
+
+
 
 
     public ListAdapter(ArrayList<SoTietKiem> lstStk,ListCallBack listCallBack)
@@ -71,57 +72,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNameSo = itemView.findViewById(R.id.tvName);
-//            tvTien = itemView.findViewById(R.id.tvTienStk);
-//            btnXoa = itemView.findViewById(R.id.btXoa);
+
         }
     }
-
-//    public Filter getFiller(){
-//
-//        return filler;
-//    }
-//
-//    Filter filler = new Filter() {
-//        // run on background
-//        @Override
-//        protected FilterResults performFiltering(CharSequence charSequence) {
-//            if(charSequence.toString().isEmpty()){
-////                list.addAll(QuerySoTietKiem.ListTenSoTietKiem(context,SignInActivity.loginUser));
-//                lstStk = listFind;
-//            }
-//            else
-//            {
-//                ArrayList<SoTietKiem> list = new ArrayList<>();
-//                for(SoTietKiem stk : listFind)
-//                {
-//                    if(stk.getTenSo().toLowerCase().contains(charSequence.toString().toLowerCase()))
-//                    {
-//                        list.add(stk);
-//                    }
-//                }
-//                lstStk = list;
-//            }
-//            FilterResults filterResults = new FilterResults();
-//            filterResults.values = lstStk;
-//            return  filterResults;
-//        }
-//
-//        //run on ui
-//        @Override
-//        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-//            lstStk = (ArrayList<SoTietKiem>) filterResults.values;
-////            lstStk.addAll((Collection<? extends SoTietKiem>) filterResults.values);
-//            notifyDataSetChanged();
-//        }
-//    };
 
 
 
 
     public interface ListCallBack {
         void OnItemClick(int id,SoTietKiem stk);
-//        void DeleteClick(int id,SoTietKiem stk);
-//        }
+        void setFilteredList(ArrayList<SoTietKiem> filteredList);
+        }
     }
-}
+
 

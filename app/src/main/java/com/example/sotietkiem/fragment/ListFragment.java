@@ -1,11 +1,13 @@
 package com.example.sotietkiem.fragment;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,7 +40,8 @@ import data.SoTietKiem;
     RecyclerView rcSoTietKiem;
 
     static public SoTietKiem curList;
-
+    private SearchView searchView;
+//    private List<SoTietKiem>
 
 
 
@@ -56,12 +59,47 @@ import data.SoTietKiem;
 
         rcSoTietKiem =v.findViewById(R.id.rcSoTietKiem);
 
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rcSoTietKiem.setAdapter(listAdapter);
         rcSoTietKiem.setLayoutManager(layoutManager);
 //        rcSoTietKiem.setAdapter(new ListAdapter(getContext()));
+
+
+         //Tạo thanh tìm kiếm
+         searchView = v.findViewById(R.id.searchView);
+         searchView.clearFocus();
+         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+             @Override
+             public boolean onQueryTextSubmit(String query) {
+                 return false;
+             }
+
+             @Override
+             public boolean onQueryTextChange(String newText) {
+                 filterList(newText);
+                 return false;
+             }
+         });
+
         return v;
     }
+
+     private void filterList(String text) {
+         ArrayList<SoTietKiem> filterList = new ArrayList<>();
+         for (SoTietKiem stk : lstStk){
+             if(stk.getTenSo().toLowerCase().contains(text.toLowerCase())){
+                 filterList.add(stk);
+             }
+         }
+         
+         if(filterList.isEmpty()){
+             Toast.makeText(getContext(), "không tìm thấy sổ", Toast.LENGTH_SHORT).show();
+         }
+         else {
+             setFilteredList(filterList);
+         }
+     }
 
      @Override
      public void OnItemClick(int id,SoTietKiem stk) {
@@ -72,6 +110,12 @@ import data.SoTietKiem;
         i.putExtra("date",lstStk.get(id).getDate());
         curList = new SoTietKiem(lstStk.get(id).getId(),lstStk.get(id).getTenSo(),lstStk.get(id).getDate(),lstStk.get(id).getDaoHan(),lstStk.get(id).getTienTietKiem());
         startActivity(i);
+     }
+
+     @Override
+     public void setFilteredList(ArrayList<SoTietKiem> filteredList) {
+             ListAdapter.lstStk =  filteredList;
+             listAdapter.notifyDataSetChanged();
      }
 
 

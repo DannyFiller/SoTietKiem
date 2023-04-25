@@ -122,11 +122,12 @@ public class DetailActivity extends AppCompatActivity {
                 RutTatCaTien(ListFragment.curList.getTienTietKiem());
                 QuerySoTietKiem.deleteStk(DetailActivity.this,ListFragment.curList.getId());
 //                Intent i = new Intent(DetailActivity.this,MainActivity.class);
-                finish();
+
                 Toast.makeText(DetailActivity.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
-//                ListFragment.lstStk.clear();
-                ListFragment.lstStk = QuerySoTietKiem.ListSoTietKiem(DetailActivity.this, SignInActivity.loginUser);
+                ListFragment.lstStk.clear();
+                ListFragment.lstStk.addAll(QuerySoTietKiem.ListSoTietKiem(DetailActivity.this, SignInActivity.loginUser));
                 ListFragment.listAdapter.notifyDataSetChanged();
+                finish();
             }
         });
     }
